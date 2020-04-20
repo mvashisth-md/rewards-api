@@ -40,12 +40,13 @@ public class TransactionController {
     @RequestMapping(value="/customers/{customerId}/transaction", method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Save customer's transaction to create more test data.")
     
-    public ResponseEntity createCustomerTransaction(@ApiParam(value = "Customer Id",required = true)
+    public ResponseEntity<String> createCustomerTransaction(@ApiParam(value = "Customer Id",required = true)
             @PathVariable(name = "customerId") String customerId, @RequestBody(required = true) TransactionData transactionData) {
         
     	transactionService.createCustomerTransaction(customerId, transactionData);
     	
-    	return ResponseEntity.ok(HttpStatus.CREATED);
+    	//Normally we should return id of created resource but this end point is just for testing
+    	return new ResponseEntity<String>(HttpStatus.CREATED) ;
     }
 
 
