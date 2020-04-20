@@ -50,7 +50,7 @@ public class RewardServiceImpl implements RewardService {
                 
         Map<String, Integer> monthlyRewardsMap = convertListToMonthlyRewardsMap(transList);
         
-        Integer totalRewards = monthlyRewardsMap.values().stream().mapToInt(reward -> reward.intValue()).sum();
+        int totalRewards = getTotalReward(monthlyRewardsMap);
         
         return new Reward(customerId, monthlyRewardsMap, totalRewards);
     }
@@ -75,7 +75,7 @@ public class RewardServiceImpl implements RewardService {
         	
             Map<String, Integer> monthlyRewardsMap = convertListToMonthlyRewardsMap(transList);
             
-            Integer totalRewards = monthlyRewardsMap.values().stream().mapToInt(reward -> reward.intValue()).sum();
+            int totalRewards = getTotalReward(monthlyRewardsMap);
             
             allRewardList.add( new Reward(customerId, monthlyRewardsMap, totalRewards));
         });
@@ -93,5 +93,15 @@ public class RewardServiceImpl implements RewardService {
     	
     	return transList.stream().collect(Collectors.groupingBy(transaction -> RewardUtil.getYearMonth(transaction.getTransactionTs()),
                 Collectors.summingInt(transaction -> RewardUtil.calculateReward(transaction.getAmount() )) ));
+    }
+    
+    /**
+     * Iterates map as stream and returns total rewards
+     * @param monthlyRewardsMap
+     * @return
+     */
+    private int getTotalReward(Map<String, Integer> monthlyRewardsMap){
+    	
+    	return monthlyRewardsMap.values().stream().mapToInt(reward -> reward.intValue()).sum();
     }
 }

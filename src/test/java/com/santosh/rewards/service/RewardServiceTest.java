@@ -50,7 +50,7 @@ public class RewardServiceTest {
 
         Map<String, Integer> expectedMonthlyRewards = new HashMap<>();
         expectedMonthlyRewards.put("2020-04", 450);
-        Integer expectedTotalRewards = 450;
+        int expectedTotalRewards = 450;
         String custId = "C1";
         List<Transaction> transactions = prepareTransactionList(Timestamp.valueOf("2020-04-19 10:20:30.678"), custId);
 
@@ -69,7 +69,7 @@ public class RewardServiceTest {
 
         Map<String, Integer> expectedMonthlyRewards = new HashMap<>();
         expectedMonthlyRewards.put("2020-04", 450);
-        Integer expectedTotalRewards = 450;
+        int expectedTotalRewards = 450;
         String custId = "C1";
         List<Transaction> transList1 = prepareTransactionList(Timestamp.valueOf("2020-04-19 10:20:30.678"), custId);
         

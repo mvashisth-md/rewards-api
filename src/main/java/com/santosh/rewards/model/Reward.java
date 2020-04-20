@@ -13,9 +13,9 @@ public class Reward {
 
 	private String customerId;
     private Map<String, Integer> monthlyRewards;
-    private Integer totalRewards;
+    private int totalRewards;
 
-    public Reward(String customerId, Map<String, Integer> monthlyRewards, Integer totalRewards) {
+    public Reward(String customerId, Map<String, Integer> monthlyRewards, int totalRewards) {
     	
     	this.customerId = customerId;
         this.monthlyRewards = monthlyRewards;
@@ -26,7 +26,7 @@ public class Reward {
 		return monthlyRewards;
 	}
 
-	public Integer getTotalRewards() {
+	public int getTotalRewards() {
 		return totalRewards;
 	}
 
