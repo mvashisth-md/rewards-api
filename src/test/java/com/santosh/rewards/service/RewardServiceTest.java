@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 /**
  * 
- * Test class for RewardService.
+ * Test class for RewardService
  * @author Santosh Singh
  *
  */
